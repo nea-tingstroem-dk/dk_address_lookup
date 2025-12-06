@@ -1,8 +1,10 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 // phpcs:disable PSR1.Files.SideEffects
 require_once 'dk_address_lookup.civix.php';
+
 // phpcs:enable
 
 use CRM_DkAddressLookup_ExtensionUtil as E;
@@ -33,6 +35,7 @@ function dk_address_lookup_civicrm_install(): void {
 function dk_address_lookup_civicrm_enable(): void {
   _dk_address_lookup_civix_civicrm_enable();
 }
+
 /**
  * Implements hook_civicrm_buildProfile().
  *
@@ -43,22 +46,23 @@ function dk_address_lookup_civicrm_buildProfile($profileName) {
     Civi::resources()->addStyleFile('dk_address_lookup', 'css/dk_address_lookup.css', [
       'region' => 'html-header',
       'weight' => 1000,
-      ]);
+    ]);
     Civi::resources()->addStyleFile('dk_address_lookup', 'css/dawa-autocomplete2.css', [
       'region' => 'html-header',
       'weight' => 1000,
-      ]);
-    Civi::resources()->addScriptFile('dk_address_lookup', 'js/dawa-autocomplete2.min.js',
+    ]);
+    Civi::resources()->addScriptFile('dk_address_lookup', 'js/dawa-autocomplete2.js',
       [
         'weight' => 100,
-      ]);
+        'region' => 'form-bottom',
+    ]);
     Civi::resources()->addScriptFile('dk_address_lookup', 'js/address_lookup_profile.js',
       [
         'weight' => 110,
-      ]);
+        'region' => 'form-bottom',
+    ]);
   }
 }
-
 
 /**
  * Implements hook_civicrm_buildForm().
@@ -71,16 +75,20 @@ function dk_address_lookup_civicrm_buildProfile($profileName) {
 function dk_address_lookup_civicrm_buildForm($formName, $form) {
   if ($formName === 'CRM_Contact_Form_Inline_Address') {
     Civi::resources()->addStyleFile('dk_address_lookup', 'css/dawa-autocomplete2.css', [
-      'region' => 'html-header',
       'weight' => 1000,
-      ]);
+      'region' => 'html-header',
+    ]);
     Civi::resources()->addScriptFile('dk_address_lookup', 'js/dawa-autocomplete2.min.js',
       [
         'weight' => 100,
-      ]);
+        'region' => 'form-bottom',
+    ]);
     Civi::resources()->addScriptFile('dk_address_lookup', 'js/address_lookup_form.js',
       [
         'weight' => 110,
-      ]);    
+        'region' => 'form-bottom',
+    ]);
+    $form->add('hidden', 'Kommunedata.Kommunekode');
+    $form->add('hidden', 'Kommunedata.Kommune');
   }
 }

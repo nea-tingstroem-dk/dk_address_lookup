@@ -16,8 +16,14 @@ CRM.$(function ($, ) {
           $("#city").trigger("change");
           $("#supplemental_address_1-Primary").val(addr.supplerendebynavn);
           $("#supplemental_address_1-Primary").trigger("change");
-          let linjer = addr.adressebetegnelse.split(",");
-          $("#street_address-1").val(linjer[0]);
+          let adresse = json.adgangsadresse.vejstykke.adresseringsnavn + " " + json.adgangsadresse.husnr;
+          if (json.etage) {
+            adresse += ", " + json.etage + ".";
+          }
+          if (json.dør) {
+            adresse += " " + json.dør;
+          }
+          $("#street_address-1").val(adresse);
           $("#street_address-1").trigger("change");
           $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0]);
           $("#geo_code_2-Primary").val(addr.adgangspunkt.koordinater[1]);
