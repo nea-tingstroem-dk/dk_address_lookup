@@ -10,11 +10,9 @@ CRM.$(function ($, ) {
         .then(response => response.json())
         .then(json => {
           let addr = json.adgangsadresse;
-          $("#postal_code-1").val(addr.postnummer.nr);
-          $("#postal_code-1").trigger("change");
-          $("#city").val(addr.postnummer.navn);
-          $("#city").trigger("change");
-          $("#supplemental_address_1-Primary").val(addr.supplerendebynavn);
+          $("#postal_code-1").val(addr.postnummer.nr).trigger("change");
+          $("#city").val(addr.postnummer.navn).trigger("change");
+          $("#supplemental_address_1-Primary").val(addr.supplerendebynavn).trigger("change");
           $("#supplemental_address_1-Primary").trigger("change");
           let adresse = json.adgangsadresse.vejstykke.adresseringsnavn + " " + json.adgangsadresse.husnr;
           if (json.etage) {
@@ -23,10 +21,9 @@ CRM.$(function ($, ) {
           if (json.dør) {
             adresse += " " + json.dør;
           }
-          $("#street_address-1").val(adresse);
-          $("#street_address-1").trigger("change");
-          $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0]);
-          $("#geo_code_2-Primary").val(addr.adgangspunkt.koordinater[1]);
+          $("#street_address-1").val(adresse).trigger("change");
+          $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0].trigger("change"));
+          $("#geo_code_2-Primary").val(addr.adgangspunkt.koordinater[1]).trigger("change");
           $("[data-crm-custom='Kommunedata:Kommunekode']").val(addr.kommune.kode).trigger("change");
           $("[data-crm-custom='Kommunedata:Kommune']").val(addr.kommune.navn).trigger("change");
         });
