@@ -54,12 +54,12 @@ function dk_address_lookup_civicrm_buildProfile($profileName) {
     Civi::resources()->addScriptFile('dk_address_lookup', 'js/dawa-autocomplete2.js',
       [
         'weight' => 100,
-        'region' => 'form-bottom',
+        'region' => 'html-header',
     ]);
     Civi::resources()->addScriptFile('dk_address_lookup', 'js/address_lookup_profile.js',
       [
         'weight' => 110,
-        'region' => 'form-bottom',
+        'region' => 'html-header',
     ]);
   }
 }

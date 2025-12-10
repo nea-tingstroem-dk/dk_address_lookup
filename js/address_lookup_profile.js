@@ -27,12 +27,12 @@ CRM.$(function ($, ) {
           $("#street_address-1").trigger("change");
           $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0]);
           $("#geo_code_2-Primary").val(addr.adgangspunkt.koordinater[1]);
-          $("#address_custom_100-Primary").val(addr.kommune.kode);
-          $("#address_custom_101-Primary").val(addr.kommune.navn);
+          $("[data-crm-custom='Kommunedata:Kommunekode']").val(addr.kommune.kode).trigger("change");
+          $("[data-crm-custom='Kommunedata:Kommune']").val(addr.kommune.navn).trigger("change");
         });
     }
   });
-  $("#editrow-address_custom_100-Primary").hide();
-  $("#editrow-address_custom_101-Primary").hide();
+  $("[data-crm-custom='Kommunedata:Kommunekode']").parent().parent().hide();
+  $("[data-crm-custom='Kommunedata:Kommune']").parent().parent().hide();
 });
 
