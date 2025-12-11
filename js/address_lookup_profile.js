@@ -22,7 +22,7 @@ CRM.$(function ($, ) {
             adresse += " " + json.dør;
           }
           $("#street_address-1").val(adresse).trigger("change");
-          $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0].trigger("change"));
+          $("#geo_code_1-Primary").val(addr.adgangspunkt.koordinater[0]).trigger("change");
           $("#geo_code_2-Primary").val(addr.adgangspunkt.koordinater[1]).trigger("change");
           $("[data-crm-custom='Kommunedata:Kommunekode']").val(addr.kommune.kode).trigger("change");
           $("[data-crm-custom='Kommunedata:Kommune']").val(addr.kommune.navn).trigger("change");
