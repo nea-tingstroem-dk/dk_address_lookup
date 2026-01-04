@@ -88,7 +88,5 @@ function dk_address_lookup_civicrm_buildForm($formName, $form) {
         'weight' => 110,
         'region' => 'form-bottom',
     ]);
-    $form->add('hidden', 'Kommunedata.Kommunekode');
-    $form->add('hidden', 'Kommunedata.Kommune');
   }
 }
